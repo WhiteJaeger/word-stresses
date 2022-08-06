@@ -14,5 +14,5 @@ def home_view():
 def get_word_stress(word: str):
     return json.dumps({
         'word': word,
-        'stress': WORDS[word]
+        'stress': WORDS[word] if word in WORDS else None
     }, ensure_ascii=False)
