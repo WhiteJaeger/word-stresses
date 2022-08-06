@@ -1,8 +1,18 @@
-from flask import Flask
+from flask import Flask, json
 
-app = Flask(__name__)
+from app.constants import WORDS
+
+APP = Flask(__name__)
 
 
-@app.route("/")
+@APP.route('/')
 def home_view():
-    return "<h1>Hello World!</h1>"
+    return '<h1>Hello There!</h1>'
+
+
+@APP.route('/get_word_stress/<string:word>')
+def get_word_stress(word: str):
+    return json.dumps({
+        'word': word,
+        'stress': WORDS[word]
+    }, ensure_ascii=False)
