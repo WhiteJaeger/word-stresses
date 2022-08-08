@@ -54,7 +54,6 @@ for URL in URLS:
 
     for w in words_html:
         word_html = str(w.find_next('em'))
-        # print(word_html)
         if not word_html or '<b>' not in word_html:
             continue
         word_html = word_html.replace('<em>', '')
@@ -67,11 +66,7 @@ for URL in URLS:
             continue
         words[word] = stressed_vowel_position
 
-        # print('*' * 10)
-        # print(stressed_vowel_position)
-        # print(word_html.replace('|', ''))
-        # print('*' * 10 + '\n')
 
-with open('/Users/andrej/PycharmProjects/orphoepic-parser/stresses.json', 'w', encoding='utf-8') as fd:
+with open('./stresses.json', 'w', encoding='utf-8') as fd:
     print(len(words))
     json.dump(words, fd, ensure_ascii=False)
